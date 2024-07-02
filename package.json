@@ -14,6 +14,8 @@
     "lint-prettier": "npm run lint:check && npm run prettier:check"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.2",
+    "framer-motion": "^11.2.12",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
