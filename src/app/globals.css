@@ -7,3 +7,9 @@
     text-wrap: balance;
   }
 }
+
+/* ================ MY STYLES ================ */
+
+h4 {
+  @apply text-lg font-medium;
+}

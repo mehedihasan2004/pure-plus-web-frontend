@@ -1,25 +1,17 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { SearchIcon } from 'lucide-react';
-import { NavbarItems, ThemeSwitcher, UserMenu } from '.';
+import { Branding, NavbarItems, ThemeSwitcher, UserMenu } from '.';
 import {
   Navbar as NextUINavbar,
   NavbarBrand,
   NavbarContent,
-  Link as NextUILink,
   Input
 } from '@nextui-org/react';
 
 export function Navbar() {
   return (
-    <NextUINavbar maxWidth="full" className="border-2 border-green-500">
+    <NextUINavbar maxWidth="full">
       <NavbarBrand>
-        <NextUILink as={Link} href="/">
-          <Image src="/images/logo.png" alt="Logo" height={60} width={60} />
-          <p className="hidden md:block font-semibold text-inherit text-xl">
-            Pure Plus
-          </p>
-        </NextUILink>
+        <Branding />
       </NavbarBrand>
 
       <NavbarItems />
