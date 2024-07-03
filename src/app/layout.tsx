@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
 import { Inter } from 'next/font/google';
-import { Navbar } from '@/components/layout';
+import { Footer, Navbar } from '@/components/layout';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +28,10 @@ export default function RootLayout({ children }: Props) {
           <header>
             <Navbar />
           </header>
-          <main>{children}</main>
+          <div className="flex flex-col h-screen">
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

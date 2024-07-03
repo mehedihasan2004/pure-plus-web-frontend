@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   NavbarContent,
   NavbarItem,
   Link as NextUILink
 } from '@nextui-org/react';
-import { usePathname } from 'next/navigation';
 
 const NAVBAR_ITEMS = [
   { label: 'Doctors', href: '/doctors' },
