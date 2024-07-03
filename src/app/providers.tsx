@@ -1,8 +1,15 @@
 import { ReactNode } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 type Props = { children: ReactNode };
 
 export function Providers({ children }: Props) {
-  return <NextUIProvider>{children}</NextUIProvider>;
+  return (
+    <NextUIProvider>
+      <NextThemesProvider defaultTheme="dark" attribute="class">
+        {children}
+      </NextThemesProvider>
+    </NextUIProvider>
+  );
 }
