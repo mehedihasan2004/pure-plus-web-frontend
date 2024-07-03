@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
 import { Inter } from 'next/font/google';
+import { Navbar } from '@/components/layout';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -23,6 +25,9 @@ export default function RootLayout({ children }: Props) {
         )}
       >
         <Providers>
+          <header>
+            <Navbar />
+          </header>
           <main>{children}</main>
         </Providers>
       </body>
