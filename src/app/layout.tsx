@@ -1,4 +1,6 @@
+import 'swiper/css';
 import './globals.css';
+import 'swiper/css/pagination';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
