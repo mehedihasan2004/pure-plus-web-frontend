@@ -1,12 +1,17 @@
+import 'swiper/css';
 import './globals.css';
+import 'swiper/css/pagination';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
-import { Inter } from 'next/font/google';
+import { Kanit as Font } from 'next/font/google';
 import { Footer, Navbar } from '@/components/layout';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Font({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
 
 export const metadata: Metadata = {
   title: 'Pure Plus',
@@ -20,7 +25,7 @@ export default function RootLayout({ children }: Props) {
     <html lang="en" className="dark">
       <body
         className={cn(
-          inter.className,
+          font.className,
           'max-w-[1444px] mx-auto container text-foreground bg-background'
         )}
       >

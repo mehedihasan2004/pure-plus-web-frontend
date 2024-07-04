@@ -1,3 +1,9 @@
+import { HomePageCarousel } from '@/components/swiper';
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <HomePageCarousel />
+    </div>
+  );
 }
