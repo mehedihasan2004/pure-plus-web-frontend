@@ -1,5 +1,6 @@
 'use client';
 
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import {
   DropdownItem,
   DropdownTrigger,
@@ -34,7 +35,7 @@ export function UserMenu() {
         <DropdownItem key="configurations">Configurations</DropdownItem>
         <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
         <DropdownItem key="logout" color="danger">
-          Log Out
+          <LogoutLink>Log Out</LogoutLink>
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

@@ -1,9 +1,7 @@
 import { UserMenu } from '.';
 import { Button } from '@nextui-org/react';
-import {
-  getKindeServerSession,
-  LoginLink
-} from '@kinde-oss/kinde-auth-nextjs/server';
+import { LoginLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 export async function UserMenuAndSigninButtonConditionalRendering() {
   const { getUser } = getKindeServerSession();
