@@ -1,11 +1,16 @@
 import { SearchIcon } from 'lucide-react';
-import { Branding, NavbarItems, ThemeSwitcher, UserMenu } from '.';
 import {
-  Navbar as NextUINavbar,
+  Input,
   NavbarBrand,
   NavbarContent,
-  Input
+  Navbar as NextUINavbar
 } from '@nextui-org/react';
+import {
+  Branding,
+  NavbarItems,
+  ThemeSwitcher,
+  UserMenuAndSigninButtonConditionalRendering
+} from '.';
 
 export function Navbar() {
   return (
@@ -31,9 +36,10 @@ export function Navbar() {
           type="search"
         />
       </NavbarContent>
+
       <NavbarContent justify="end">
         <ThemeSwitcher />
-        <UserMenu />
+        <UserMenuAndSigninButtonConditionalRendering />
       </NavbarContent>
     </NextUINavbar>
   );
