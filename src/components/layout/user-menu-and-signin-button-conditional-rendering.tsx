@@ -7,8 +7,6 @@ export async function UserMenuAndSigninButtonConditionalRendering() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  console.log(user);
-
   return (
     <>
       {user ? (
