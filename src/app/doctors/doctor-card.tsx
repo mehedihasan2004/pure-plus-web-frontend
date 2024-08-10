@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/react';
 
 export function DoctorCard() {
   return (
-    <div className="p-4 rounded-sm shadow-lg border flex justify-start gap-x-4 overflow-hidden items-center">
+    <div className="p-4 rounded-md bg-primary/10 flex justify-start gap-x-4 overflow-hidden items-center">
       <figure className="overflow-hidden size-48 content-center">
         <Image
           src="/images/logo.png"
@@ -19,10 +19,10 @@ export function DoctorCard() {
           Metabolism)
         </h5>
         <p>Senior Consultant</p>
-        <p>Department: Diabetology & Endocrinology</p>
+        <p>Diabetology & Endocrinology</p>
 
         <div className="flex items-center justify-start gap-x-6">
-          <Button variant="solid" color="primary">
+          <Button variant="solid" color="primary" className="text-white">
             Book an appointment
           </Button>
           <Button variant="faded" color="primary">
