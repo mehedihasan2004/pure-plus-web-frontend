@@ -10,10 +10,34 @@
 
 /* ================ MY STYLES ================ */
 
+h1 {
+  @apply scroll-m-20 text-4xl font-medium;
+}
+
+h2 {
+  @apply scroll-m-20 text-3xl font-medium;
+}
+
 h3 {
-  @apply text-xl font-medium;
+  @apply scroll-m-20 text-2xl font-medium;
 }
 
 h4 {
-  @apply text-lg font-medium;
+  @apply scroll-m-20 text-xl font-medium;
+}
+
+h5 {
+  @apply scroll-m-20 text-lg font-medium;
+}
+
+h6 {
+  @apply scroll-m-20 text-sm font-medium;
+}
+
+p {
+  @apply leading-6 font-light text-balance;
+}
+
+small {
+  @apply text-xs font-medium leading-none;
 }

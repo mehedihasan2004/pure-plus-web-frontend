@@ -33,7 +33,7 @@ export default function RootLayout({ children }: Props) {
           <header>
             <Navbar />
           </header>
-          <div className="flex flex-col h-screen">
+          <div className="flex flex-col h-screen container mx-auto">
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
