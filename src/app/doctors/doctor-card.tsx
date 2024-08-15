@@ -48,16 +48,15 @@ export function DoctorCard({
         <p>{enumReader(department)}</p>
 
         <div className="flex items-center justify-start gap-x-6">
+          <Button variant="solid" color="primary" className="text-white">
+            Book an appointment
+          </Button>
           <Button
             as={Link}
             href={`/doctors/${id}`}
-            variant="solid"
+            variant="faded"
             color="primary"
-            className="text-white"
           >
-            Book an appointment
-          </Button>
-          <Button variant="faded" color="primary">
             Doctor profile
           </Button>
         </div>
