@@ -30,7 +30,7 @@ export default async function DoctorDetails({ params: { id } }: Props) {
           rank={doctor!.rank}
         />
         <BookAnAppointment className="lg:hidden" />
-        <RestInformation />
+        <RestInformation description={doctor?.description} />
       </div>
       <BookAnAppointment className="hidden lg:block w-1/3" />
     </section>
