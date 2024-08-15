@@ -3,17 +3,17 @@ import { EGender, ERole } from '@/enums/user';
 type User = {
   id: string;
   name: string;
-  phone: string | null;
+  phone?: string;
   email: string;
-  gender: EGender | null;
-  image: string | null;
+  gender?: EGender;
+  image?: string;
   role: ERole;
-  dateOfBirth: string | null;
+  dateOfBirth?: string;
 
-  patient: string | null;
-  doctor: string | null;
-  admin: string | null;
-  superAdmin: string | null;
+  patient?: string;
+  doctor?: string;
+  admin?: string;
+  superAdmin?: string;
 
   createdAt: string;
   updatedAt: string;

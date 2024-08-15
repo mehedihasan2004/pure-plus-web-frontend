@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { Doctor } from '@/types/doctor';
 import { api } from '@/lib/api/constants';
 import { DoctorCard } from './doctor-card';
 import { SearchAndFilterSidebar } from './search-and-filter-sidebar';
-import { Doctor } from '@/types/doctor';
 
 export default async function Doctors() {
   let doctors: Doctor[] | null = null;

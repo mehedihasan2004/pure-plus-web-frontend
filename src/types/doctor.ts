@@ -6,7 +6,7 @@ type Doctor = {
   department: EDepartment;
   rank: ERank;
   qualifications: string;
-  description: string | null;
+  description?: string;
 
   userId: string;
   user: User;

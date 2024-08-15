@@ -13,17 +13,22 @@ export default async function DoctorDetails({ params: { id } }: Props) {
   try {
     const res = await axios.get(`${api}/doctors/${id}`);
 
-    console.log(res);
+    doctor = res?.data?.data;
   } catch (error) {
     console.log('Error From Get The Doctor ->', error);
   }
 
-  console.log(doctor);
-
   return (
     <section className="lg:flex">
       <div className="w-full lg:w-2/3">
-        <KeyInformation />
+        <KeyInformation
+          name={doctor!.user.name}
+          image={doctor?.user.image}
+          gender={doctor?.user.gender}
+          qualifications={doctor!.qualifications}
+          department={doctor!.department}
+          rank={doctor!.rank}
+        />
         <BookAnAppointment className="lg:hidden" />
         <RestInformation />
       </div>

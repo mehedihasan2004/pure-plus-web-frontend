@@ -1,20 +1,13 @@
+import Link from 'next/link';
 import Image from 'next/image';
+import { User } from '@/types/user';
 import { EGender } from '@/enums/user';
-import { ERank } from '@/enums/doctor';
+import { Doctor } from '@/types/doctor';
 import { enumReader } from '@/lib/utils';
 import { Button } from '@nextui-org/react';
-import { EDepartment } from '@/enums/common';
-import Link from 'next/link';
 
-type Props = {
-  id: string;
-  name: string;
-  image: string | null;
-  gender: EGender | null;
-  qualifications: string;
-  rank: ERank;
-  department: EDepartment;
-};
+type Props = Pick<User, 'id' | 'name' | 'image' | 'gender'> &
+  Pick<Doctor, 'qualifications' | 'rank' | 'department'>;
 
 export function DoctorCard({
   id,
@@ -25,11 +18,11 @@ export function DoctorCard({
   rank,
   department
 }: Props) {
-  let src: string = '/images/doctor/male.webp';
+  let src: string = '/images/doctor/male.png';
 
   if (image) src = image;
   else if (gender && gender === EGender.FEMALE)
-    src = '/images/doctor/female.jpg';
+    src = '/images/doctor/female.png';
 
   return (
     <div className="p-4 rounded-md bg-primary/10 flex justify-start gap-x-4 overflow-hidden items-center">
