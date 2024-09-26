@@ -12,7 +12,7 @@ export async function UserMenuAndSigninButtonConditionalRendering() {
       {user ? (
         <UserMenu />
       ) : (
-        <Button variant="ghost" color="primary">
+        <Button color="primary" className="text-md">
           <LoginLink>Sign In</LoginLink>
         </Button>
       )}
