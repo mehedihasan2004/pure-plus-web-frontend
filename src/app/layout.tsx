@@ -21,11 +21,11 @@ type Props = Readonly<{ children: ReactNode }>;
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           font.className,
-          'max-w-[1444px] mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background border'
+          'max-w-[1444px] h-screen mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background border'
         )}
       >
         <Providers>{children}</Providers>
