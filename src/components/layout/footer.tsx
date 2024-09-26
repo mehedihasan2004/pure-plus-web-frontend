@@ -58,7 +58,7 @@ function Social() {
 
 export function Footer() {
   return (
-    <footer className="py-20">
+    <footer className="py-20 border border-red-500">
       <div className="bg-gray-300/70 dark:bg-gray-500/70 h-[1px] mb-8" />
 
       <Branding className="sm:block" />

@@ -6,7 +6,6 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
 import { Kanit as Font } from 'next/font/google';
-import { Footer, Navbar } from '@/components/layout';
 
 const font = Font({
   subsets: ['latin'],
@@ -15,7 +14,7 @@ const font = Font({
 
 export const metadata: Metadata = {
   title: 'Pure Plus',
-  description: 'Pure Plus is a hospital management website.'
+  description: 'Pure Plus is a hospital management system.'
 };
 
 type Props = Readonly<{ children: ReactNode }>;
@@ -26,18 +25,10 @@ export default function RootLayout({ children }: Props) {
       <body
         className={cn(
           font.className,
-          'max-w-[1444px] mx-auto container text-foreground bg-background'
+          'max-w-[1444px] mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background border'
         )}
       >
-        <Providers>
-          <header>
-            <Navbar />
-          </header>
-          <div className="flex flex-col h-screen container mx-auto">
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
