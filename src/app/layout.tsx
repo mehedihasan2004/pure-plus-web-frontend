@@ -4,7 +4,7 @@ import 'swiper/css/pagination';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Providers } from './providers';
+import { Providers } from '@/providers';
 import { Kanit as Font } from 'next/font/google';
 
 const font = Font({
