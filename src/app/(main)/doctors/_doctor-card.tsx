@@ -4,7 +4,8 @@ import { User } from '@/types/user';
 import { EGender } from '@/enums/user';
 import { Doctor } from '@/types/doctor';
 import { enumReader } from '@/lib/utils';
-import { Button, Tooltip } from '@nextui-org/react';
+import { BookAnAppointment } from './_book-an-appointment';
+import { Button, useDisclosure, Tooltip } from '@nextui-org/react';
 
 type Props = Pick<User, 'id' | 'name' | 'image' | 'gender'> &
   Pick<Doctor, 'qualifications' | 'rank' | 'department'>;
@@ -18,6 +19,8 @@ export function DoctorCard({
   rank,
   department
 }: Props) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   let src: string = '/images/doctor/male.png';
 
   if (image) src = image;
@@ -51,6 +54,7 @@ export function DoctorCard({
             size="sm"
             color="primary"
             className="text-white lg:text-md"
+            onPress={onOpen}
           >
             Book an appointment
           </Button>
@@ -66,6 +70,7 @@ export function DoctorCard({
           </Button>
         </div>
       </div>
+      <BookAnAppointment isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>
   );
 }
