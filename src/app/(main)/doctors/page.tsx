@@ -1,5 +1,5 @@
-import { AllDoctors } from './all-doctors';
-import { SearchAndFilterSidebar } from './search-and-filter-sidebar';
+import { AllDoctors } from './_all-doctors';
+import { SearchAndFilterSidebar } from './_search-and-filter-sidebar';
 
 export default function Doctors() {
   return (

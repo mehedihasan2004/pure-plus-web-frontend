@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { Doctor } from '@/types/doctor';
-import { api } from '@/lib/api/constants';
 import { KeyInformation } from './_key-information';
 import { RestInformation } from './_rest-information';
 import { BookAnAppointment } from './_book-an-appointment';
+import { api } from '@/lib/api/api-routes';
+import { commonHeaders } from '@/lib/api/headers';
 
 type Props = { params: { id: string } };
 
@@ -11,7 +12,9 @@ export default async function DoctorDetails({ params: { id } }: Props) {
   let doctor: Doctor | null = null;
 
   try {
-    const res = await axios.get(`${api}/doctors/${id}`);
+    const res = await axios.get(api.doctors.route + id, {
+      headers: commonHeaders
+    });
 
     doctor = res?.data?.data;
   } catch (error) {
