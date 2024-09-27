@@ -4,7 +4,7 @@ import { User } from '@/types/user';
 import { EGender } from '@/enums/user';
 import { Doctor } from '@/types/doctor';
 import { enumReader } from '@/lib/utils';
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 
 type Props = Pick<User, 'id' | 'name' | 'image' | 'gender'> &
   Pick<Doctor, 'qualifications' | 'rank' | 'department'>;
@@ -35,7 +35,13 @@ export function DoctorCard({
         />
       </figure>
       <div className="space-y-2 w-[calc(100%-192px)]">
-        <h5 className="truncate">{name + ' ' + qualifications}</h5>
+        <Tooltip
+          content={name + ' ' + qualifications}
+          delay={400}
+          closeDelay={400}
+        >
+          <h5 className="truncate">{name + ' ' + qualifications}</h5>
+        </Tooltip>
         <p>{enumReader(rank)}</p>
         <p>{enumReader(department)}</p>
 
