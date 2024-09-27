@@ -14,7 +14,7 @@ import {
 
 export function Navbar() {
   return (
-    <NextUINavbar maxWidth="full" className="border">
+    <NextUINavbar maxWidth="full">
       <NavbarBrand>
         <Branding />
       </NavbarBrand>

@@ -5,10 +5,10 @@ type Props = { children: ReactNode };
 
 export default function MainLayout({ children }: Props) {
   return (
-    <div className="flex flex-col">
+    <div>
       <Navbar />
 
-      <main className="border border-green-500 flex-1">{children}</main>
+      {children}
     </div>
   );
 }

@@ -22,8 +22,8 @@ export function AllDoctors() {
 
   if (isLoading) {
     return (
-      <div className="size-full flex justify-center items-center">
-        <Spinner color="success" />;
+      <div className="size-full flex justify-center items-center py-20">
+        <Spinner color="primary" />;
       </div>
     );
   }

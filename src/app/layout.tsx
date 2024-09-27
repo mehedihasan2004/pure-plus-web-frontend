@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Props) {
       <body
         className={cn(
           font.className,
-          'max-w-[1444px] h-screen mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background border overflow-x-hidden'
+          'max-w-[1444px] h-screen mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background overflow-x-hidden'
         )}
       >
         <Providers>{children}</Providers>

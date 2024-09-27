@@ -25,7 +25,7 @@ export function DoctorCard({
     src = '/images/doctor/female.png';
 
   return (
-    <div className="p-4 rounded-md flex justify-start gap-x-4 overflow-hidden items-center bg-secondary-900/70">
+    <div className="p-4 rounded-md flex justify-start gap-x-4 overflow-hidden items-center border border-secondary">
       <figure className="relative overflow-hidden size-48 content-center">
         <Image
           src={src}
