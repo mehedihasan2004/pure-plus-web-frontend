@@ -7,21 +7,21 @@ type Props = { className?: string };
 
 export function Branding({ className }: Props) {
   return (
-    <NextUILink as={Link} href="/" className="group">
+    <NextUILink as={Link} href="/" className="flex items-end">
       <Image
         src="/images/logo.png"
         alt="Logo"
         height={56}
         width={56}
-        className="md:size-14 group-hover:animate-spin"
+        className="md:size-14"
       />
       <p
         className={cn(
-          'hidden lg:block font-semibold text-inherit text-xl',
+          '-ml-2 hidden lg:block font-semibold text-inherit text-xl',
           className
         )}
       >
-        Pure Plus
+        ure Plus
       </p>
     </NextUILink>
   );

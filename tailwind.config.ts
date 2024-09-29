@@ -40,6 +40,20 @@ const config: Config = {
               DEFAULT: '#10b981',
               foreground: '#000000'
             },
+            secondary: {
+              50: '#f9fafb',
+              100: '#f3f4f6',
+              200: '#e5e7eb',
+              300: '#d1d5db',
+              400: '#9ca3af',
+              500: '#6b7280',
+              600: '#4b5563',
+              700: '#374151',
+              800: '#1f2937',
+              900: '#111827',
+              DEFAULT: '#6b7280',
+              foreground: '#000000'
+            },
             danger: {
               50: '#fdf2f8',
               100: '#fce7f3',
@@ -71,6 +85,20 @@ const config: Config = {
               900: '#064e3b',
               DEFAULT: '#10b981',
               foreground: '#ffffff'
+            },
+            secondary: {
+              50: '#f9fafb',
+              100: '#f3f4f6',
+              200: '#e5e7eb',
+              300: '#d1d5db',
+              400: '#9ca3af',
+              500: '#6b7280',
+              600: '#4b5563',
+              700: '#374151',
+              800: '#1f2937',
+              900: '#111827',
+              DEFAULT: '#6b7280',
+              foreground: '#000000'
             },
             danger: {
               50: '#fdf2f8',
