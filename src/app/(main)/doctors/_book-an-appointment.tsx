@@ -8,7 +8,8 @@ import {
   ModalContent,
   DatePicker,
   Select,
-  SelectItem
+  SelectItem,
+  Input
 } from '@nextui-org/react';
 
 type Props = {
@@ -22,8 +23,17 @@ export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
       <ModalContent>
         {onClose => (
           <>
-            <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+            <ModalHeader className="flex flex-col gap-1">
+              Book an appointment
+            </ModalHeader>
             <ModalBody>
+              <Input
+                isRequired
+                type="text"
+                label="Patient name"
+                placeholder="Ex. Sam Altman"
+                defaultValue=""
+              />
               <DatePicker isRequired label="Appointment date" />
               <Select
                 isRequired
