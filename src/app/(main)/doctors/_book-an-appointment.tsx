@@ -1,15 +1,17 @@
+import { useForm } from 'react-hook-form';
+import { CreateAnAppointment } from '@/types/appointment';
 import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
 import {
+  Input,
   Modal,
   Button,
+  Select,
   ModalBody,
+  DatePicker,
+  SelectItem,
   ModalFooter,
   ModalHeader,
-  ModalContent,
-  DatePicker,
-  Select,
-  SelectItem,
-  Input
+  ModalContent
 } from '@nextui-org/react';
 
 type Props = {
@@ -18,11 +20,32 @@ type Props = {
 };
 
 export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors }
+  } = useForm<CreateAnAppointment>();
+
+  function onSubmit(data: CreateAnAppointment) {
+    console.log(data);
+  }
+
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
       <ModalContent>
         {onClose => (
-          <>
+          <form
+            onSubmit={handleSubmit(data => {
+              if (Object.keys(errors).length === 0) {
+                onSubmit(data);
+                onClose();
+              } else {
+                console.log('Validation errors', errors);
+              }
+            })}
+          >
             <ModalHeader className="flex flex-col gap-1">
               Book an appointment
             </ModalHeader>
@@ -33,12 +56,14 @@ export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
                 label="Patient name"
                 placeholder="Ex. Sam Altman"
                 defaultValue=""
+                {...register('name')}
               />
               <DatePicker isRequired label="Appointment date" />
               <Select
                 isRequired
                 label="Time slot"
                 placeholder="Select a time slot"
+                {...register('timeSlot')}
               >
                 {APPOINTMENT_TIME_SLOTS.map(slot => (
                   <SelectItem key={slot}>{slot}</SelectItem>
@@ -49,11 +74,11 @@ export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
               <Button color="danger" variant="flat" onPress={onClose}>
                 Close
               </Button>
-              <Button color="primary" onPress={onClose}>
+              <Button type="submit" color="primary" onPress={onClose}>
                 Schedule
               </Button>
             </ModalFooter>
-          </>
+          </form>
         )}
       </ModalContent>
     </Modal>
