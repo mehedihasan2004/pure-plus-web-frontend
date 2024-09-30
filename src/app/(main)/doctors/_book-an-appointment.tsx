@@ -1,4 +1,7 @@
+import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
+// @ts-expect-error
+import { DateValue } from '@react-types/shared';
 import { CreateAnAppointment } from '@/types/appointment';
 import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
 import {
@@ -22,30 +25,39 @@ type Props = {
 export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
   const {
     register,
-    handleSubmit,
     setValue,
-    watch,
+    handleSubmit,
     formState: { errors }
   } = useForm<CreateAnAppointment>();
 
-  function onSubmit(data: CreateAnAppointment) {
-    console.log(data);
+  function handleDateChange(value: DateValue | null) {
+    if (value) {
+      const formattedDate = format(new Date(value), 'yyyy-MM-dd');
+      setValue('date', formattedDate);
+    } else {
+      setValue('date', '');
+    }
+  }
+
+  function onSubmit(data: CreateAnAppointment, onClose: () => void) {
+    try {
+      if (Object.keys(errors).length === 0) {
+        console.log(data, 'from new way');
+
+        onClose();
+      } else {
+        console.log('Validation errors', errors);
+      }
+    } catch (error) {
+      console.log('Error From Appointment Booking --> ', error);
+    }
   }
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
       <ModalContent>
         {onClose => (
-          <form
-            onSubmit={handleSubmit(data => {
-              if (Object.keys(errors).length === 0) {
-                onSubmit(data);
-                onClose();
-              } else {
-                console.log('Validation errors', errors);
-              }
-            })}
-          >
+          <form onSubmit={handleSubmit(data => onSubmit(data, onClose))}>
             <ModalHeader className="flex flex-col gap-1">
               Book an appointment
             </ModalHeader>
@@ -58,7 +70,12 @@ export function BookAnAppointment({ isOpen, onOpenChange }: Props) {
                 defaultValue=""
                 {...register('name')}
               />
-              <DatePicker isRequired label="Appointment date" />
+              <DatePicker
+                isRequired
+                label="Appointment date"
+                value={undefined}
+                onChange={handleDateChange}
+              />
               <Select
                 isRequired
                 label="Time slot"
