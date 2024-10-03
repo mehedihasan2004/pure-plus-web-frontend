@@ -12,7 +12,7 @@ export default async function DoctorDetails({ params: { id } }: Props) {
   let doctor: Doctor | null = null;
 
   try {
-    const res = await axios.get(api.doctors.route + id, {
+    const res = await axios.get(api.doctors.route + '/' + id, {
       headers: commonHeaders
     });
 
