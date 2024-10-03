@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { DateValue } from '@react-types/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateAnAppointment } from '@/types/appointment';
+import { convertToISOForPrisma } from '@/helpers/date-time';
 import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
 import { CreateAnAppointmentZodSchema } from '@/schemas/appointment';
 import {
@@ -16,7 +17,6 @@ import {
   SelectItem,
   DatePicker
 } from '@nextui-org/react';
-import { convertToISOForPrisma } from '@/helpers/date-time';
 
 type Props = {
   className?: string;
@@ -24,6 +24,8 @@ type Props = {
   doctorId: string;
   patientName?: string | null;
 };
+
+type FormData = Omit<CreateAnAppointment, 'patientId' | ' doctorId'>;
 
 export function BookAnAppointment({
   className,
@@ -36,7 +38,7 @@ export function BookAnAppointment({
     setValue,
     handleSubmit,
     formState: { errors }
-  } = useForm<CreateAnAppointment>({
+  } = useForm<FormData>({
     resolver: zodResolver(CreateAnAppointmentZodSchema),
     defaultValues: {
       name: patientName ?? '',
@@ -54,7 +56,7 @@ export function BookAnAppointment({
     }
   }
 
-  function onSubmit(data: CreateAnAppointment) {
+  function onSubmit(data: FormData) {
     try {
       data.date = convertToISOForPrisma(data.date);
 
