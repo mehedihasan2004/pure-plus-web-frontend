@@ -8,7 +8,6 @@ import { DateValue } from '@react-types/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateAnAppointment } from '@/types/appointment';
 import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
-import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 import { CreateAnAppointmentZodSchema } from '@/schemas/appointment';
 import {
   Input,
@@ -17,13 +16,21 @@ import {
   SelectItem,
   DatePicker
 } from '@nextui-org/react';
+import { convertToISOForPrisma } from '@/helpers/date-time';
 
-type Props = { className?: string };
+type Props = {
+  className?: string;
+  patientId: string;
+  doctorId: string;
+  patientName?: string | null;
+};
 
-export function BookAnAppointment({ className }: Props) {
-  const { user } = useKindeBrowserClient();
-  const patientName = user?.given_name + ' ' + user?.family_name;
-
+export function BookAnAppointment({
+  className,
+  patientId,
+  doctorId,
+  patientName
+}: Props) {
   const {
     register,
     setValue,
@@ -49,7 +56,9 @@ export function BookAnAppointment({ className }: Props) {
 
   function onSubmit(data: CreateAnAppointment) {
     try {
-      console.log(data);
+      data.date = convertToISOForPrisma(data.date);
+
+      console.log({ ...data, patientId, doctorId });
     } catch (error) {
       console.log('Error From Appointment Booking --> ', error);
     }
