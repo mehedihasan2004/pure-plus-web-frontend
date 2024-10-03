@@ -17,6 +17,7 @@ import {
   SelectItem,
   DatePicker
 } from '@nextui-org/react';
+import { timeSlotReader } from '@/helpers/enum-reader';
 
 type Props = {
   className?: string;
@@ -104,7 +105,7 @@ export function BookAnAppointment({
             {...register('timeSlot')}
           >
             {APPOINTMENT_TIME_SLOTS.map(slot => (
-              <SelectItem key={slot}>{slot}</SelectItem>
+              <SelectItem key={slot}>{timeSlotReader(slot)}</SelectItem>
             ))}
           </Select>
           {errors.timeSlot?.message && (
