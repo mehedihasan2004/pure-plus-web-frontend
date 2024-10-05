@@ -1,12 +1,22 @@
 const baseApi = process.env.NEXT_PUBLIC_MAIN_API as string;
 
+const usersRoute = '/users';
 const doctorsRoute = '/doctors';
 const patientsRoute = '/patients';
 const appointmentsRoute = '/appointments';
 
 export const api = (() => {
   return {
-    // Patient routes
+    // Users route
+    get users() {
+      return {
+        get route() {
+          return baseApi + usersRoute;
+        }
+      };
+    },
+
+    // Patients route
     get patients() {
       return {
         get route() {
@@ -15,7 +25,7 @@ export const api = (() => {
       };
     },
 
-    // Doctor routes
+    // Doctors route
     get doctors() {
       return {
         get route() {
@@ -24,7 +34,7 @@ export const api = (() => {
       };
     },
 
-    // Appointment routes
+    // Appointments route
     get appointments() {
       return {
         get route() {

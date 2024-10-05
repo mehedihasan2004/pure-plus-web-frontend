@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 // @ts-expect-error
 import { DateValue } from '@react-types/shared';
 import { CreateAnAppointment } from '@/types/appointment';
-import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
+import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointments';
 import {
   Input,
   Modal,

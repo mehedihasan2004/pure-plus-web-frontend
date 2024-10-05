@@ -13,12 +13,12 @@ import { timeSlotReader } from '@/helpers/enum-readers';
 import { CreateAnAppointment } from '@/types/appointment';
 import { convertToISOForPrisma } from '@/helpers/date-time';
 import { errorToast, successToast } from '@/helpers/toasts';
-import { createAnAppointment } from '@/actions/appointments';
+import { createAnAppointment } from '@/actions/appointment';
 import { CreateAnAppointmentZodSchema } from '@/schemas/appointment';
 import {
   APPOINTMENT_TIME_SLOTS,
   APPOINTMENTS_INVALIDATE_KEY
-} from '@/constants/appointment';
+} from '@/constants/appointments';
 import {
   Input,
   Button,
