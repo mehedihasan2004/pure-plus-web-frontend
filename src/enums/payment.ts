@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 export enum EPaymentStatus {
   NOT_PAID = 'NOT_PAID',
   PENDING = 'PENDING',

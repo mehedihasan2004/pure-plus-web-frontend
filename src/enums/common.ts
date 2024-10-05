@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-
-enum EDepartment {
+export enum EDepartment {
   ACCIDENT_AND_EMERGENCY = 'ACCIDENT_AND_EMERGENCY',
   ANAESTHESIA = 'ANAESTHESIA',
   CANCER_CARE = 'CANCER_CARE',
@@ -44,5 +42,3 @@ enum EDepartment {
   TRANSFUSION_MEDICINE = 'TRANSFUSION_MEDICINE',
   UROLOGY = 'UROLOGY'
 }
-
-export { EDepartment };

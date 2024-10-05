@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-
-enum ERank {
+export enum ERank {
   MEDICAL_STUDENT = 'MEDICAL_STUDENT',
   INTERN = 'INTERN',
   RESIDENT = 'RESIDENT',
@@ -24,5 +22,3 @@ enum ERank {
   ASSOCIATE_PROFESSOR = 'ASSOCIATE_PROFESSOR',
   CHAIRMAN = 'CHAIRMAN'
 }
-
-export { ERank };

@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 export enum EAppointmentTimeSlot {
   T09COLON01_AM__09COLON15_AM = 'T09COLON01_AM__09COLON15_AM',
   T09COLON16_AM__09COLON30_AM = 'T09COLON16_AM__09COLON30_AM',
