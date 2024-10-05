@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { auth } from '@/lib/paths/auth';
 import { redirect } from 'next/navigation';
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { Navbar } from '@/components/layout';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 type Props = { children: ReactNode };
 
@@ -16,10 +16,8 @@ export default async function DashboardLayout({ children }: Props) {
 
   return (
     <div className="h-screen">
-      <div className="border">
-        <Navbar />
-      </div>
-      <div className="border h-screen">{children}</div>
+      <Navbar />
+      <div className="h-[calc(100vh-64px)]">{children}</div>
     </div>
   );
 }
