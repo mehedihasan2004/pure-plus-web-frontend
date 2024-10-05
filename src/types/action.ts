@@ -1,5 +1,5 @@
-export type ActionGenericResponse = {
+export type ActionGenericResponse<T> = {
   success: boolean;
   message: string;
-  data: any | null;
+  data: T | null;
 };
