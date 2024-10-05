@@ -1,6 +1,7 @@
 import 'swiper/css';
 import './globals.css';
 import 'swiper/css/pagination';
+import { Toaster } from 'sonner';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: Props) {
           'max-w-[1444px] h-screen mx-1 px-1 sm:max-lg:mx-2 sm:px-2 xl:mx-auto text-foreground bg-background overflow-x-hidden'
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

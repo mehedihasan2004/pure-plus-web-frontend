@@ -14,7 +14,7 @@ export const api = (() => {
       };
     },
 
-    // Doctor routes
+    // Appointment routes
     get appointments() {
       return {
         get route() {

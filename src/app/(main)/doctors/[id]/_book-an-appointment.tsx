@@ -2,31 +2,37 @@
 
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import { Loader } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 // @ts-expect-error
 import { DateValue } from '@react-types/shared';
+import { useMutation } from '@tanstack/react-query';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { timeSlotReader } from '@/helpers/enum-readers';
 import { CreateAnAppointment } from '@/types/appointment';
 import { convertToISOForPrisma } from '@/helpers/date-time';
-import { APPOINTMENT_TIME_SLOTS } from '@/constants/appointment';
+import { errorToast, successToast } from '@/helpers/toasts';
+import { createAnAppointment } from '@/actions/appointments';
 import { CreateAnAppointmentZodSchema } from '@/schemas/appointment';
+import {
+  APPOINTMENT_TIME_SLOTS,
+  APPOINTMENTS_INVALIDATE_KEY
+} from '@/constants/appointment';
 import {
   Input,
   Button,
   Select,
-  SelectItem,
-  DatePicker
+  DatePicker,
+  SelectItem
 } from '@nextui-org/react';
-import { timeSlotReader } from '@/helpers/enum-reader';
 
 type Props = {
   className?: string;
-  patientId: string;
-  doctorId: string;
   patientName?: string | null;
-};
+} & Pick<CreateAnAppointment, 'patientId' | 'doctorId'>;
 
-type FormData = Omit<CreateAnAppointment, 'patientId' | ' doctorId'>;
+type FormData = Omit<CreateAnAppointment, 'patientId' | 'doctorId'>;
 
 export function BookAnAppointment({
   className,
@@ -34,7 +40,10 @@ export function BookAnAppointment({
   doctorId,
   patientName
 }: Props) {
+  const { push } = useRouter();
+
   const {
+    reset,
     register,
     setValue,
     handleSubmit,
@@ -45,6 +54,19 @@ export function BookAnAppointment({
       name: patientName ?? '',
       date: '',
       timeSlot: ''
+    }
+  });
+
+  const { mutate, isPending, data } = useMutation({
+    mutationFn: createAnAppointment,
+    mutationKey: [APPOINTMENTS_INVALIDATE_KEY],
+    onSuccess: async () => {
+      successToast(data?.message);
+      push('/');
+      reset();
+    },
+    onError: (error: any) => {
+      errorToast(error);
     }
   });
 
@@ -61,9 +83,10 @@ export function BookAnAppointment({
     try {
       data.date = convertToISOForPrisma(data.date);
 
-      console.log({ ...data, patientId, doctorId });
+      mutate({ ...data, patientId, doctorId });
     } catch (error) {
       console.log('Error From Appointment Booking --> ', error);
+      throw new Error('Error From Appointment Booking --> ', error as Error);
     }
   }
 
@@ -85,6 +108,7 @@ export function BookAnAppointment({
             <p className="text-danger">{errors.name.message}</p>
           )}
         </div>
+
         <div>
           <DatePicker
             isRequired
@@ -105,7 +129,9 @@ export function BookAnAppointment({
             {...register('timeSlot')}
           >
             {APPOINTMENT_TIME_SLOTS.map(slot => (
-              <SelectItem key={slot}>{timeSlotReader(slot)}</SelectItem>
+              <SelectItem key={slot} className="tracking-wide">
+                {timeSlotReader(slot)}
+              </SelectItem>
             ))}
           </Select>
           {errors.timeSlot?.message && (
@@ -113,8 +139,25 @@ export function BookAnAppointment({
           )}
         </div>
 
-        <Button type="submit" color="primary" className="w-full text-md">
-          Schedule
+        <Button
+          type="submit"
+          color="primary"
+          disabled={isPending}
+          className={cn(
+            'w-full text-md flex items-center justify-center gap-x-2',
+            {
+              'cursor-not-allowed opacity-80': isPending
+            }
+          )}
+        >
+          {isPending ? (
+            <>
+              <Loader size={20} className="animate-spin" />{' '}
+              <span>Scheduling...</span>
+            </>
+          ) : (
+            'Schedule'
+          )}
         </Button>
       </form>
     </div>
