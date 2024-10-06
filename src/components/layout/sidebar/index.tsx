@@ -5,6 +5,7 @@ import { Skeleton } from '@nextui-org/skeleton';
 import { useQuery } from '@tanstack/react-query';
 import { getAnUserByUserId } from '@/actions/user';
 import { USERS_INVALIDATE_KEY } from '@/constants/users';
+import { ListItem } from './listItem';
 
 type Props = { userId: string };
 
@@ -34,7 +35,7 @@ export function Sidebar({ userId }: Props) {
     return <Skeleton className="md:w-20 lg:w-52 h-full" />;
   }
 
-  let items;
+  let items: string[] | null;
   if (data?.data?.role === EUserRole.PATIENT) {
     items = patientItems;
   } else if (data?.data?.role === EUserRole.DOCTOR) {
@@ -48,6 +49,10 @@ export function Sidebar({ userId }: Props) {
   console.log(items);
 
   return (
-    <aside className="border border-red-400 md:w-20 lg:w-52 fixed h-full bg-secondary-900 hidden md:block"></aside>
+    <aside className="border border-red-400 md:w-20 lg:w-52 fixed h-full bg-secondary-900 hidden md:block lg:p-2">
+      <ul className="space-y-2">
+        {items && items.map(item => <ListItem key={item} label={item} />)}
+      </ul>
+    </aside>
   );
 }
