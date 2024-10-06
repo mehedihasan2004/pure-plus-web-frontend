@@ -21,7 +21,7 @@ export default async function DashboardLayout({ children }: Props) {
       <div className="h-[calc(100vh-64px)] border relative">
         <Sidebar userId={user.id} />
 
-        <div className="border border-green-400 md:w-[calc(100%-5rem)] lg:w-[calc(100%-13rem)] md:ml-20 lg:ml-52 h-full pt-4 pl-4 overflow-y-scroll scrollbar-hide">
+        <div className="border border-green-400 md:w-[calc(100%-3.5rem)] lg:w-[calc(100%-13rem)] md:ml-14 lg:ml-52 h-full pt-4 pl-4 overflow-y-scroll scrollbar-hide">
           {children}
         </div>
       </div>
