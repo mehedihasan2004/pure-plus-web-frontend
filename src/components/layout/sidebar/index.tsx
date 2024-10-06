@@ -1,11 +1,11 @@
 'use client';
 
+import { ListItem } from './listItem';
 import { EUserRole } from '@/enums/user';
 import { Skeleton } from '@nextui-org/skeleton';
 import { useQuery } from '@tanstack/react-query';
 import { getAnUserByUserId } from '@/actions/user';
 import { USERS_INVALIDATE_KEY } from '@/constants/users';
-import { ListItem } from './listItem';
 
 type Props = { userId: string };
 
