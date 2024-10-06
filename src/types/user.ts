@@ -1,4 +1,4 @@
-import { EGender, ERole } from '@/enums/user';
+import { EGender, EUserRole } from '@/enums/user';
 
 type User = {
   id: string;
@@ -7,7 +7,7 @@ type User = {
   email: string;
   gender?: EGender;
   image?: string;
-  role: ERole;
+  role: EUserRole;
   dateOfBirth?: string;
 
   patient?: string;

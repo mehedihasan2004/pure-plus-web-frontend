@@ -4,7 +4,7 @@ export enum EGender {
   OTHERS = 'OTHERS'
 }
 
-export enum ERole {
+export enum EUserRole {
   PATIENT = 'PATIENT',
   DOCTOR = 'DOCTOR',
   NURSE = 'NURSE',
