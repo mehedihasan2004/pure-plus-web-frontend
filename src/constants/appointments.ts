@@ -38,3 +38,5 @@ export const APPOINTMENT_TIME_SLOTS: string[] = [
   'T08COLON31_PM__08COLON45_PM',
   'T08COLON46_PM__09COLON00_PM'
 ];
+
+export const APPOINTMENTS_INVALIDATE_KEY = 'appointments';

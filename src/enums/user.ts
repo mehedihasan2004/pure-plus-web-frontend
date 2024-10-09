@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-
-enum EGender {
+export enum EGender {
   MALE = 'MALE',
   FEMALE = 'FEMALE',
   OTHERS = 'OTHERS'
 }
 
-enum ERole {
+export enum EUserRole {
   PATIENT = 'PATIENT',
   DOCTOR = 'DOCTOR',
   NURSE = 'NURSE',
@@ -18,5 +16,3 @@ enum ERole {
   IT_SUPPORT = 'IT_SUPPORT',
   SUPER_ADMIN = 'SUPER_ADMIN'
 }
-
-export { EGender, ERole };
